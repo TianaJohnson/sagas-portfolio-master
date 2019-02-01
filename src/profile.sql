@@ -1,8 +1,11 @@
+
+-- tages table --
 CREATE TABLE "tags" (
     "id" SERIAL PRIMARY KEY,
     "name" varchar(255) NOT NULL
 );
 
+-- projects table --
 CREATE TABLE "projects" (
     "id" SERIAL PRIMARY KEY,
     "name" varchar(255) NOT NULL,
@@ -14,5 +17,6 @@ CREATE TABLE "projects" (
     "tag_id" INT REFERENCES "tags"
 );
 
+-- tages that can be used --
 INSERT INTO "tags" ("name") 
 VALUES ('React'), ('jQuery'), ('Node'), ('SQL'), ('Redux'), ('HTML');

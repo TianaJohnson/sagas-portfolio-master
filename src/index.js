@@ -9,15 +9,20 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+// import { takeEvery, put } from 'redux-saga';
+// import axios from 'axios'; 
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    // yield takeEvery ();
 
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+
+//REDUCER
 // Used to store projects returned from the server
 const projects = (state = [], action) => {
     switch (action.type) {
@@ -28,6 +33,8 @@ const projects = (state = [], action) => {
     }
 }
 
+
+//REDUCER
 // Used to store the project tags (e.g. 'React', 'jQuery', 'Angular', 'Node.js')
 const tags = (state = [], action) => {
     switch (action.type) {
@@ -37,6 +44,9 @@ const tags = (state = [], action) => {
             return state;
     }
 }
+
+// generatore function for saga
+//function*
 
 // Create one store that all components can use
 const storeInstance = createStore(
