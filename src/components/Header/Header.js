@@ -6,6 +6,7 @@ class Header extends Component {
         return(
             <div className="portfolio-header">
             <h1>Tiana Johnson</h1>
+            <br/> 
             </div>
         )
     }

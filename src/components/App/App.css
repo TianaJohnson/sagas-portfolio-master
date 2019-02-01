@@ -22,6 +22,12 @@
   font-size: 35px;
   height: 150px;
   padding: 25px;
+}
 
-
+.admin-header {
+  font-family: cursive;
+  font-size: 35px;
+  background-color: plum;
+  height: 150px;
+  padding: 25px;
 }
