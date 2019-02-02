@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 
 .App-title {
@@ -17,6 +17,7 @@
 }
 
 .portfolio-header {
+  text-align: center;
   background-color: deepskyblue;
   font-family: cursive;
   font-size: 35px;
@@ -25,9 +26,18 @@
 }
 
 .admin-header {
+  text-align: center;
   font-family: cursive;
   font-size: 35px;
   background-color: plum;
   height: 150px;
   padding: 25px;
+}
+
+.input-display {
+  float: left;
+}
+
+.admin-display-div {
+  padding: 15px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdminHeader from './../Header/AdminHeader.js';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import AdminDisplay from './AdminDisplay';
 
 class Portfolio extends Component {
 
@@ -10,12 +11,15 @@ class Portfolio extends Component {
                 <Router>
                     <div>
                     <AdminHeader />
-                    
-                        <Link to='/'>Back to Projevts</Link>
+                        <br/>
+                        <Link to='/'>Back to Projects</Link>
                         <Route exact path="/" component={Portfolio} />
                     </div>
                 </Router>
-                <p>Admin Display</p>
+                <div>
+                <AdminDisplay/>
+
+                </div>
             </div>
         )
     }
