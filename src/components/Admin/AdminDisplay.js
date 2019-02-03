@@ -11,17 +11,17 @@ class AdminDisplay extends Component {
     constructor() {
         super();
         this.state = {
-            tag_id:''
-            // newProject: {
+             newProject: {
             // name: '', // name
             // date: 0, //date
-            // tag_id:'', // tag
+             tag_id:'', // tag
             // gth_url: '', //hit hub url
             // web_url: '', // website url
             // decription: ''
             // }
         }
     }
+}
 
     componentDidMount = () => {
         this.getAdminInfo();
@@ -44,9 +44,11 @@ class AdminDisplay extends Component {
     addTags = () => {
         this.props.dispatch({
             type: 'SET_TAGS',
-            payload: this.state.tag_id })
+            payload: this.state.newProject })
             this.setState({
+                newProject: {
                 tag_id: '',
+                }
             })
         }
 
@@ -103,12 +105,12 @@ class AdminDisplay extends Component {
                         variant="outlined"
                         
                     />
-                    <select onChange={this.handleBoxChange} value={this.state.tag_id}>
-                    <option value="">Select</option>
+                    {/* <select onChange={this.handleBoxChange} value={this.state.newProject}>
+                    <option>Select</option>
                     {this.props.reduxState.tags.map((tag, i ) => {
                             return<option key={i} value={tag.id}>{tag.name}</option>
                     })}
-                    </select>
+                    </select> */}
                 </form>
             </div>
         )
