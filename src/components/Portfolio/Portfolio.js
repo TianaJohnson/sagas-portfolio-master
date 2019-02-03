@@ -30,7 +30,7 @@ class Portfolio extends Component {
             <div>
                 <Header />
                 <p>Portfolio display</p>
-                {JSON.stringify(this.props.reduxStore.projects)}
+                {JSON.stringify(this.props.reduxStore.projects)} 
                 
             </div>
         )
