@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
+// import MenuItem from '@material-ui/core/MenuItem';
 import axios from 'axios';
 
 
@@ -10,14 +11,15 @@ class AdminDisplay extends Component {
     constructor() {
         super();
         this.state = {
-            newProject: {
-            name: '', // name
-            date: 0, //date
-            tag_id: '', // tag
-            gth_url: '', //hit hub url
-            web_url: '', // website url
-            decription: ''
-            }
+            tag_id:''
+            // newProject: {
+            // name: '', // name
+            // date: 0, //date
+            // tag_id:'', // tag
+            // gth_url: '', //hit hub url
+            // web_url: '', // website url
+            // decription: ''
+            // }
         }
     }
 
@@ -39,21 +41,38 @@ class AdminDisplay extends Component {
             console.log('error in get admin', error);
         })
     }
-
-    addNewProject = () => {
-        //event.preventDefault(); // dount this is necessary but it makes it so the page doesnt refresh
+    addTags = () => {
         this.props.dispatch({
-            type: 'SET_PROJECTS',
-            payload: this.state.newProject })
+            type: 'SET_TAGS',
+            payload: this.state.tag_id })
+            this.setState({
+                tag_id: '',
+            })
+        }
+
+    // addNewProject = () => {
+    //     //event.preventDefault(); // dount this is necessary but it makes it so the page doesnt refresh
+    //     this.props.dispatch({
+    //         type: 'SET_PROJECTS',
+    //         payload: this.state.newProject })
+    //         this.setState({
+    //             newProject: {
+    //                 name: '', // name
+    //                 date: 0, //date
+    //                 gth_url: '', //hit hub url
+    //                 web_url: '', // website url
+    //                 decription: ''
+    //                 }
+    //         });
+    //     }
+        // EVENT HANDLE for tag box
+        handleBoxChange = event => {
+            console.log('event happended')
             this.setState({
                 newProject: {
-                    name: '', // name
-                    date: 0, //date
-                    tag_id: '', // tag
-                    gth_url: '', //hit hub url
-                    web_url: '', // website url
-                    decription: ''
-                    }
+                    ...this.state.newProject,
+                    tag_id: event.target.value,
+                }
             });
         }
     
@@ -72,6 +91,7 @@ class AdminDisplay extends Component {
                         label="Name"
                         margin="normal"
                         variant="outlined"
+                        
                     />
                     <TextField
                         className="input-display"
@@ -81,19 +101,14 @@ class AdminDisplay extends Component {
                         style={{ margin: 10 }}
                         margin="normal"
                         variant="outlined"
+                        
                     />
-
-                    <TextField
-                        className="input-display"
-                        type="text"
-                        id="outlined-name"
-                        select
-                        lable="select"
-                        style={{ margin: 10 }}
-                        margin="normal"
-                        variant="outlined"
-                        value={this.props.reduxStore.tags}
-                    />
+                    <select onChange={this.handleBoxChange} value={this.state.tag_id}>
+                    <option value="">Select</option>
+                    {this.props.reduxState.tags.map((tag, i ) => {
+                            return<option key={i} value={tag.id}>{tag.name}</option>
+                    })}
+                    </select>
                 </form>
             </div>
         )
