@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 // import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 
@@ -11,17 +12,17 @@ class AdminDisplay extends Component {
     constructor() {
         super();
         this.state = {
-             newProject: {
-            // name: '', // name
-            // date: 0, //date
-             tag_id:'', // tag
-            // gth_url: '', //hit hub url
-            // web_url: '', // website url
-            // decription: ''
-            // }
+            newProject: {
+                // name: '', // name
+                // date: 0, //date
+                tag_id: '', // tag
+                // gth_url: '', //hit hub url
+                // web_url: '', // website url
+                // decription: ''
+                // }
+            }
         }
     }
-}
 
     componentDidMount = () => {
         this.getAdminInfo();
@@ -44,13 +45,14 @@ class AdminDisplay extends Component {
     addTags = () => {
         this.props.dispatch({
             type: 'SET_TAGS',
-            payload: this.state.newProject })
-            this.setState({
-                newProject: {
+            payload: this.state.newProject
+        })
+        this.setState({
+            newProject: {
                 tag_id: '',
-                }
-            })
-        }
+            }
+        })
+    }
 
     // addNewProject = () => {
     //     //event.preventDefault(); // dount this is necessary but it makes it so the page doesnt refresh
@@ -67,17 +69,17 @@ class AdminDisplay extends Component {
     //                 }
     //         });
     //     }
-        // EVENT HANDLE for tag box
-        handleBoxChange = event => {
-            console.log('event happended')
-            this.setState({
-                newProject: {
-                    ...this.state.newProject,
-                    tag_id: event.target.value,
-                }
-            });
-        }
-    
+    // EVENT HANDLE for tag box
+    handleBoxChange = event => {
+        console.log('event happended')
+        this.setState({
+            newProject: {
+                ...this.state.newProject,
+                tag_id: event.target.value,
+            }
+        });
+    }
+
 
 
 
@@ -93,17 +95,24 @@ class AdminDisplay extends Component {
                         label="Name"
                         margin="normal"
                         variant="outlined"
-                        
+
                     />
                     <TextField
                         className="input-display"
                         type="date"
-                        id="outlined-name"
+                        id="outlined-date"
                         lable="date"
                         style={{ margin: 10 }}
                         margin="normal"
                         variant="outlined"
-                        
+
+                    />
+                    <TextField
+                        className="input-display"
+                        select
+                        margin="normal"
+                        variant="outlined"
+                        style={{ margin: 10 }}
                     />
                     {/* <select onChange={this.handleBoxChange} value={this.state.newProject}>
                     <option>Select</option>
@@ -111,8 +120,32 @@ class AdminDisplay extends Component {
                             return<option key={i} value={tag.id}>{tag.name}</option>
                     })}
                     </select> */}
+
+                    <TextField
+                        className="input-display"
+                        id="outline-website-input"
+                        margin="normal"
+                        variant="outlined"
+                        style={{ margin: 10 }}
+                        label="website"
+                    />
+
+                    <TextField
+                        className="input-display"
+                        id="outlined-textarea"
+                        label="Description"
+                        multiline
+                        rowsMax="4"
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                        style={{ margin: 10 }}
+                    />
+                    <Button variant="outlined" color="primary" className="input-display" size="large" style={{ margin: 10 }}>
+                    Submit
+                    </Button>
                 </form>
-            </div>
+            </div >
         )
     }
 }

@@ -14,7 +14,7 @@ router.get('/', (rec, res) => {
 });
 
 router.get('/admin', (rec, res) => {
-  const queryText = 'SELECT * FROM "tags";';
+  const queryText = 'SELECT * FROM "projects";';
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
@@ -22,5 +22,11 @@ router.get('/admin', (rec, res) => {
       res.sendStatus(500);
     });
 });
+
+router.post('/admin', (rec, res) => {
+  const newData = req.body;
+  const queryText = 'INSERT INTO projects ("name", "description"'
+
+})
 
 module.exports = router;
